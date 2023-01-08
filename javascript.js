@@ -4,13 +4,13 @@ function computerChoice() {
     return choices[Math.floor(Math.random()* 3)]
 }
 
+let gameWin = '';
 //create playRound function
 function playRound(userChoice, computerSelection) {
 
 console.log(`Computer chose: ${computerSelection}`)
 console.log(`You Chose: ${userChoice}`)
 
-let gameWin;
 
 if (userChoice == 'rock' && computerSelection == 'rock' ||
     userChoice == 'paper' && computerSelection == 'paper' ||
@@ -20,14 +20,15 @@ if (userChoice == 'rock' && computerSelection == 'rock' ||
                 userChoice == 'paper' && computerSelection == 'rock' ||
                 userChoice == 'scissors' && computerSelection == 'paper') {
         console.log(`Congrats! You Win! ${userChoice} beats ${computerSelection}`)
-        gameWin = true;
+        gameWin = 'Winner';
     } else {
         console.log(`Booo! You lose ${computerSelection} beats ${userChoice}`)
-        gameWin = false;
+        gameWin = 'Loser';
     }
     console.log(gameWin)
     return gameWin;
 }
+console.log(gameWin)
 
 // `Booo! You lose ${computerSelection} beats ${userChoice}`
 // `Congrats! You Win! ${userChoice} beats ${computerSelection}`
@@ -40,16 +41,30 @@ if (userChoice == 'rock' && computerSelection == 'rock' ||
 // computerSelection = computerChoice()
 
 // console.log(playRound(userChoice, computerSelection))
+
+// let userScore = 0;
+// let computerScore = 0;
+// if (gameWin === 'Winner') {
+//     userScore++;
+// } else {
+//     computerScore++;
+// }
+
+let userScore = 0;
+let computerScore = 0;
 function game() {
     let i = 0;
-    let computerScore = 0;
-    let userScore = 0;
-    while (i < 5) {
+    for (;i < 5;) {
         userChoice = prompt("Enter: 'Rock, Paper, Scissors'").toLowerCase();
         computerSelection = computerChoice()
-        playRound(userChoice, computerSelection);
+        playRound(userChoice, computerSelection)
         i++;
     }
+}
+if (gameWin === 'Winner') {
+    userScore++;
+} else {
+    computerScore++;
 }
 
 console.log(game())
